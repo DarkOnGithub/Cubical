@@ -31,18 +31,18 @@ namespace Assets.scripts.Block
             return TextureCache["null"];
         }
 
-        public string materialName;
-        public string defaultTexturePath;
-        Dictionary<Faces,Texture2D> facesTexture;
+        public string MaterialName;
+        public string DefaultTexturePath;
+        private Dictionary<Faces,Texture2D> FacesTexture;
         public BlockMaterial(string materialName)
         {
             Materials[materialName] = this;
-            this.materialName = materialName;
+            this.MaterialName = materialName;
         }
 
         BlockMaterial SetDefault(string defaultTexturePath)
         {
-            this.defaultTexturePath = defaultTexturePath;
+            this.DefaultTexturePath = defaultTexturePath;
             return this;
         }
 
@@ -57,12 +57,12 @@ namespace Assets.scripts.Block
 
         void SetFaceTexture(Faces face, string texture)
         {
-            this.facesTexture[face] = LoadTexture(texture);
+            this.FacesTexture[face] = LoadTexture(texture);
         }
         
         Texture2D GetFaceTexture(Faces faces)
         {
-            return this.facesTexture[faces];
+            return this.FacesTexture[faces];
         }
     }
 }
