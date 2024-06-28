@@ -4,7 +4,7 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Assets.scripts.Block
+namespace Block
 {
     public sealed class BlockMaterial
     {
