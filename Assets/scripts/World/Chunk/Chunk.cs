@@ -16,7 +16,10 @@ namespace World.Chunk
             _blocks = new int[ChunkSize.x * ChunkSize.y * ChunkSize.z];
         }
 
-
+        public void AddBlock(Block.Block block)
+        {
+            
+        }
 
     }
 }

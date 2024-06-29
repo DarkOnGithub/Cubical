@@ -20,7 +20,10 @@ namespace Block
 
         static BlockRegistry()
         {
-            Registrer(new Block("Air", 0).SetHardness(0f));
+            Registrer(new Block("Air", 0)
+                .SetHardness(0f)
+                .SetCollidable(false)
+            );
             Registrer(new Block("Null",1));
         }
     }
