@@ -35,24 +35,24 @@ namespace Block
         public bool HasGravity = false;
         public bool IsTransparent = false;
         public bool CanCollide = true;
-        public bool ImmutableState = true;
-        public Func<byte, BlockState> State;
+        private readonly BlockState _defaultState;
         public Block(string blockName, int blockId)
         {
             BlockName = blockName;
             BlockId = blockId;
-            if (ImmutableState)
-            {
-                BlockState s = new BlockState(this, 0);
-                State = state => s;
-            }
-            else
-            {
-                State = state => new BlockState(this, state);
-            } 
+            _defaultState = GetState(0);
         }
-        
-        public Block SetCollidable(bool canCollide)
+
+        public BlockState GetState()
+        {
+            return _defaultState;
+        }
+
+        public BlockState GetState(byte state)
+        {
+            return new BlockState(this, state);
+        }
+        public Block SetCollision(bool canCollide)
         {
             CanCollide = canCollide;
             return this;

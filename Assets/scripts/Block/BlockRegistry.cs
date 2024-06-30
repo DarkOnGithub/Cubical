@@ -15,14 +15,14 @@ namespace Block
             IdBlocks[block.BlockId] = block;
         }
 
-        [CanBeNull] public static Block GetBlock(int id) => IdBlocks[id];
-        [CanBeNull] public static Block GetBlock(string name) => NameBlocks[name];
+        public static Block GetBlock(int id) => IdBlocks[id];
+        public static Block GetBlock(string name) => NameBlocks[name];
 
         static BlockRegistry()
         {
             Registrer(new Block("Air", 0)
                 .SetHardness(0f)
-                .SetCollidable(false)
+                .SetCollision(false)
             );
             Registrer(new Block("Null",1));
         }

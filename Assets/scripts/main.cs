@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Block;
 using UnityEngine;
+using World.Chunk;
 
 public class main : MonoBehaviour
 {
     public void Start()
     {
-        Debug.Log("a");
+        var c = new Chunk(new Vector2Int(0,0));
+        c.AddBlock(BlockRegistry.GetBlock(0).GetState(),new Vector3Int(0,0,0));
     }
 }
