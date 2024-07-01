@@ -4,57 +4,34 @@ namespace Block
 {
 
     public class Block
-    {
-
-        public struct BlockState
-        {
-            public Block Block;
-            public byte State;
-            public override string ToString()
-            {
-                return $"Cubical: {Block.BlockName}";
-            }
-
-            public void StateProperties(byte state)
-            {
-                
-            }
-            public BlockState(Block block, byte state)
-            {
-                Block = block;
-                State = state;
-            }   
-            
-        }
-        
+    {       
         public string BlockName;
-        public int BlockId;
+        public ushort BlockId;
         
         public BlockMaterial BlockMaterial;
         public float Hardness = 10f;
         public bool HasGravity = false;
         public bool IsTransparent = false;
         public bool CanCollide = true;
-        private readonly BlockState _defaultState;
-        public Block(string blockName, int blockId)
+        public bool IsSolid = true;
+        public Block(string blockName, ushort blockId)
         {
             BlockName = blockName;
             BlockId = blockId;
-            _defaultState = GetState(0);
         }
-
-        public BlockState GetState()
+        
+        public T ConvertState<T>(byte state) where T : class 
         {
-            return _defaultState;
-        }
-
-        public BlockState GetState(byte state)
-        {
-            return new BlockState(this, state);
+            return null;
         }
         public Block SetCollision(bool canCollide)
         {
             CanCollide = canCollide;
+            return this;
+        }
+        public Block SetSolidity(bool isSolid)
+        {
+            IsSolid = isSolid;
             return this;
         }
         public Block SetMaterial(BlockMaterial blockMaterial)

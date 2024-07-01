@@ -21,7 +21,7 @@ namespace World.Chunk
             _blocks = new UInt16[ChunkSize.x * ChunkSize.y * ChunkSize.z];
         }
 
-        public void AddBlock(Block.Block.BlockState state, Vector3Int position)
+        public void AddBlock(Block.Block block, Vector3Int position, byte state = 0)
         {
             UInt16 index = position.ToInt16();
             if (index < 0 || index >= UInt16.MaxValue)
@@ -30,8 +30,8 @@ namespace World.Chunk
             }
 
             if (_blocks[index] != 0) throw new ArgumentException($"There is already a block at: {position.ToString()}");
-            _blocks[index] = (ushort)state.Block.BlockId;
-            _states[index] = state.State;
+            _blocks[index] = block.BlockId;
+            _states[index] = state;
         }
 
     }
